@@ -52,12 +52,12 @@ class Main extends Component {
         <Header />
         <div>
           <Switch>
-              <Route path='/home' component={HomePage} />
-              <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />} />
-              <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
-              <Route path='/menu/:dishId' component={DishWithId} />
-              <Route exact path='/contactus' component={Contact} />} />
-              <Redirect to="/home" />
+          <Route path='/home' component={HomePage} />
+          <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
+          <Route path='/menu/:dishId' component={DishWithId} />
+          <Route path='/aboutus' component={() => <About leader= {this.state.leaders}></About>} />
+          <Route exact path='/contactus' component={Contact} />
+          <Redirect to="/home" />
           </Switch>
         </div>
         <Footer />

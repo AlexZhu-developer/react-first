@@ -8647,7 +8647,7 @@ react-popper@^0.9.2:
     popper.js "^1.14.1"
     prop-types "^15.6.1"
 
-react-redux-form@^1.16.8:
+react-redux-form@^1.16.14:
   version "1.16.14"
   resolved "https://registry.yarnpkg.com/react-redux-form/-/react-redux-form-1.16.14.tgz#0c3b14a2a5144d1acc38a3645d8a89661a3b37dd"
   integrity sha512-exd8FoWwJRQynjnYqCLmcbwcqgRPyU+qiKmTA7/T8qlNgyqgmbAgkYNe9NG9FYb5oLgHAtx5vDhVEpje888lIA==
