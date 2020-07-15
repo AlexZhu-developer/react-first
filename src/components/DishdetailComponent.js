@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem,
     Button, Row, Col, Label } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
-
+import { Loading } from './LoadingComponent';
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
@@ -152,8 +152,25 @@ class CommentForm extends Component {
     }
 
     const DishDetail = (props) => {
-
-        if (props.dish != null) {
+        if (props.isLoading) {
+            return(
+                <div className="container">
+                    <div className="row">            
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        else if (props.errMess) {
+            return(
+                <div className="container">
+                    <div className="row">            
+                        <h4>{props.errMess}</h4>
+                    </div>
+                </div>
+            );
+        }
+        else if (props.dish != null) {
             return(
                 <div className="container">
                     <div className="row">
@@ -169,12 +186,13 @@ class CommentForm extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <RenderDish dish={props.dish} />
-                        <RenderComments comments={props.comments} 
-                            addComment= {props.addComment}
-                            dishId= {props.dish.id}/>
+                            <RenderDish dish={props.dish} />
+                            <RenderComments 
+                                comments={props.comments}
+                                addComment={props.addComment}
+                                dishId={props.dish.id} 
+                            /> 
                     </div>
-                
                 </div>
             )
         }else{
