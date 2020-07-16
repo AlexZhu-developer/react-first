@@ -1,11 +1,13 @@
   
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+import { createStore, combineReducers, applyMiddleware} from 'redux';
+import { createForms } from 'react-redux-form';
 import { Dishes } from './dishes';
 import { Comments } from './comments';
 import { Promotions } from './promotions';
 import { Leaders } from './leaders';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { InitialFeedback } from './forms';
 
 
 export const ConfigureStore = () => {
@@ -15,11 +17,11 @@ export const ConfigureStore = () => {
             dishes: Dishes,
             comments: Comments,
             promotions: Promotions,
-            leaders: Leaders
+            leaders: Leaders,
+            ...createForms({feedback: InitialFeedback})
         }),
-        // 添加 thunk和logger 中间件
         applyMiddleware(thunk, logger)
     );
 
     return store;
-}
+};
