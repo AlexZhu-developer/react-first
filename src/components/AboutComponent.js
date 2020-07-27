@@ -1,40 +1,35 @@
-
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 function About(props) {
-    console.log(props)
-    console.log(props.leaders)
-    const leaders = props.leaders.map((leader) => {
+
+    const leaders = props.leaders.map(leader => {
         return (
-            <RenderLeader leader = {leader} />
+            <div key={leader.id} className="col-12 mt-5">
+                <RenderLeader leader={leader} />
+            </div>
+
         );
     });
 
-    function RenderLeader({leader}) {
-        console.log(leader)
-        return(
-            <div key={leader.id} className="col-12 mt-5">
-                <Media tag="li" >
-                    <Media left middle>
-                        <Media object src={leader.image} alt={leader.name} >
 
-                        </Media>
-                    </Media>
-                    <Media body className="ml-5">
-                        <Media heading>{leader.name}</Media>
-                        <p>{leader.designation}</p>
-                        <p>{leader.description}</p>
-                    </Media>
+    function RenderLeader({ leader }) {
+        return (
+            <Media tag="li">
+                <Media left middle>
+                    <Media object src={leader.image} alt={leader.name} />
                 </Media>
-            </div>
-            );
-        }
+                <Media body className="ml-5">
+                    <Media heading>{leader.name}</Media>
+                    <p>{leader.designation}</p>
+                    <p>{leader.description}</p>
+                </Media>
+            </Media>
+        );
+    }
 
-
-
-    return(
+    return (
         <div className="container">
             <div className="row">
                 <Breadcrumb>
@@ -98,4 +93,4 @@ function About(props) {
     );
 }
 
-export default About;
+export default About;    
